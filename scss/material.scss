@@ -64,13 +64,10 @@ label
 		position: absolute;
 		top: -0.875rem;
 		width: 3rem;
-	}
-		input[type="checkbox"]:not(:checked) ~ .ripple
-		{
-			animation: unripple 450ms;
-			-webkit-animation: unripple 450ms;
-		}
 
+		animation: unripple 450ms;
+		-webkit-animation: unripple 450ms;
+	}
 		input[type="checkbox"]:checked ~ .ripple
 		{
 			background-color: $switch-light-active;
@@ -92,6 +89,7 @@ label
 		&:before
 		{
 			box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0 inset;
+			color: $switch-light-active;
 			content: ' ';
 			display: block;
 			height: 0;
@@ -229,5 +227,37 @@ label
 
 body.dark
 {
+	background-color: $bg-dark;
+	color: #ccc;
 
+	.checkbox
+	{
+		.ripple
+		{
+			background-color: $switch-dark-inactive;
+		}
+			input[type="checkbox"]:checked ~ .ripple
+			{
+				background-color: $switch-dark-active;
+			}
+
+		.check
+		{
+			color: $switch-dark-inactive;
+
+			&:before
+			{
+				color: $switch-dark-active;
+			}
+		}
+			input[type="checkbox"]:checked ~ .check
+			{
+				border-color: $switch-dark-active;
+
+				&:before
+				{
+					color: $switch-dark-active;
+				}
+			}
+	}
 }
