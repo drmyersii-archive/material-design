@@ -16,7 +16,7 @@
 	var makeMaterialCheckbox = function (normalCheckbox)
 	{
 		var materialCheckbox = doc.createElement('div');
-			materialCheckbox.setAttribute('class', 'checkbox checkbox-primary');
+			materialCheckbox.setAttribute('class', 'checkbox');
 
 		var ripple = doc.createElement('span');
 			ripple.setAttribute('class', 'ripple');

@@ -1,10 +1,18 @@
 * {
   box-sizing: border-box; }
 
+body {
+  background-color: #eee;
+  font-family: 'Roboto', sans-serif; }
+
+label {
+  cursor: pointer; }
+
 .checkbox {
   display: inline-block;
-  position: relative; }
-  .checkbox input[type=checkbox] {
+  position: relative;
+  vertical-align: bottom; }
+  .checkbox input[type="checkbox"] {
     cursor: pointer;
     height: 100%;
     margin: 0;
@@ -20,7 +28,7 @@
     z-index: 1;
     transition-duration: 0.2s; }
   .checkbox .ripple {
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: #717171;
     border-radius: 100%;
     content: ' ';
     display: block;
@@ -31,22 +39,24 @@
     position: absolute;
     top: -0.875rem;
     width: 3rem; }
-  .checkbox input[type=checkbox]:not(:checked) ~ .ripple {
+  .checkbox input[type="checkbox"]:not(:checked) ~ .ripple {
     animation: unripple 450ms;
     -webkit-animation: unripple 450ms; }
-  .checkbox input[type=checkbox]:checked ~ .ripple {
+  .checkbox input[type="checkbox"]:checked ~ .ripple {
+    background-color: #009587;
     animation: ripple 450ms;
     -webkit-animation: ripple 450ms; }
   .checkbox .check {
     border: 0.125rem solid;
     border-radius: 0.125rem;
+    color: #717171;
     height: 1.25rem;
     overflow: hidden;
     position: relative;
     width: 1.25rem; }
     .checkbox .check:before {
       box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0 inset;
-      content: "";
+      content: ' ';
       display: block;
       height: 0;
       margin-top: -0.25rem;
@@ -56,18 +66,15 @@
       transform: rotate(45deg);
       animation: uncheck 150ms linear forwards;
       -webkit-animation: uncheck 150ms linear forwards; }
-  .checkbox input[type=checkbox]:checked ~ .check:before {
-    box-shadow: 0 0 0 0.625rem, 0.625rem -0.625rem 0 0.625rem, 2rem 0 0 1.25rem, 0 2rem 0 1.25rem, -0.3125rem 0.3125rem 0 0.625rem, 1.25rem -0.75rem 0 0.6875rem;
-    animation: check 150ms linear forwards;
-    -webkit-animation: check 150ms linear forwards; }
-  .checkbox input[type=checkbox][disabled]:not(:checked) ~ .check:before, .checkbox input[type=checkbox][disabled] ~ .circle {
+  .checkbox input[type="checkbox"]:checked ~ .check {
+    border-color: #009587; }
+    .checkbox input[type="checkbox"]:checked ~ .check:before {
+      box-shadow: 0 0 0 0.625rem, 0.625rem -0.625rem 0 0.625rem, 2rem 0 0 1.25rem, 0 2rem 0 1.25rem, -0.3125rem 0.3125rem 0 0.625rem, 1.25rem -0.75rem 0 0.6875rem;
+      color: #009587;
+      animation: check 150ms linear forwards;
+      -webkit-animation: check 150ms linear forwards; }
+  .checkbox input[type="checkbox"][disabled]:not(:checked) ~ .check:before {
     opacity: 0.5; }
-  .checkbox input[type=checkbox][disabled] ~ .check:after {
-    background-color: #eee;
-    transform: rotate(-45deg); }
-  .checkbox:not(:hover) input[type=checkbox] ~ .check:before, .checkbox:not(:hover) input[type=checkbox] ~ .check:after {
-    animation-duration: 1ms;
-    -webkit-animation-duration: 1ms; }
 
 @-webkit-keyframes check {
   0% {
@@ -106,14 +113,14 @@
   0% {
     opacity: 0; }
   50% {
-    opacity: 0.2; }
+    opacity: 0.1; }
   100% {
     opacity: 0; } }
 @-webkit-keyframes unripple {
   0% {
     opacity: 0; }
   50% {
-    opacity: 0.2; }
+    opacity: 0.1; }
   100% {
     opacity: 0; } }
 

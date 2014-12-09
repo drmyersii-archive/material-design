@@ -1,13 +1,35 @@
+$bg-light: #eee;
+$switch-light-active: #009587;
+$switch-light-inactive: #717171;
+
+$bg-dark: #333;
+$switch-dark-active: #009587;
+$switch-dark-inactive: #f6f6f6;
+
+
 *
 {
 	box-sizing: border-box;
 }
 
-.checkbox {
+body
+{
+	background-color: $bg-light;
+	font-family: 'Roboto', sans-serif;
+}
+
+label
+{
+	cursor: pointer;
+}
+
+.checkbox
+{
 	display: inline-block;
 	position: relative;
+	vertical-align: bottom;
 
-	input[type=checkbox]
+	input[type="checkbox"]
 	{
 		cursor: pointer;
 		height: 100%;
@@ -31,7 +53,7 @@
 
 	.ripple
 	{
-		background-color: rgba(0, 0, 0, 0.75);
+		background-color: $switch-light-inactive;
 		border-radius: 100%;
 		content: ' ';
 		display: block;
@@ -43,14 +65,16 @@
 		top: -0.875rem;
 		width: 3rem;
 	}
-		input[type=checkbox]:not(:checked) ~ .ripple
+		input[type="checkbox"]:not(:checked) ~ .ripple
 		{
 			animation: unripple 450ms;
 			-webkit-animation: unripple 450ms;
 		}
 
-		input[type=checkbox]:checked ~ .ripple
+		input[type="checkbox"]:checked ~ .ripple
 		{
+			background-color: $switch-light-active;
+
 			animation: ripple 450ms;
 			-webkit-animation: ripple 450ms;
 		}
@@ -59,6 +83,7 @@
 	{
 		border: 0.125rem solid;
 		border-radius: 0.125rem;
+		color: $switch-light-inactive;
 		height: 1.25rem;
 		overflow: hidden;
 		position: relative;
@@ -67,7 +92,7 @@
 		&:before
 		{
 			box-shadow: 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0, 0 0 0 0 inset;
-			content: "";
+			content: ' ';
 			display: block;
 			height: 0;
 			margin-top: -0.25rem;
@@ -81,34 +106,24 @@
 			-webkit-animation: uncheck 150ms linear forwards;
 		}
 	}
-		input[type=checkbox]:checked ~ .check:before
+		input[type="checkbox"]:checked ~ .check
 		{
-			box-shadow: 0 0 0 0.625rem, 0.625rem -0.625rem 0 0.625rem, 2rem 0 0 1.25rem, 0 2rem 0 1.25rem, -0.3125rem 0.3125rem 0 0.625rem, 1.25rem -0.75rem 0 0.6875rem;
-			
-			animation: check 150ms linear forwards;
-			-webkit-animation: check 150ms linear forwards;
+			border-color: $switch-light-active;
+
+			&:before
+			{
+				box-shadow: 0 0 0 0.625rem, 0.625rem -0.625rem 0 0.625rem, 2rem 0 0 1.25rem, 0 2rem 0 1.25rem, -0.3125rem 0.3125rem 0 0.625rem, 1.25rem -0.75rem 0 0.6875rem;
+				color: $switch-light-active;
+				
+				animation: check 150ms linear forwards;
+				-webkit-animation: check 150ms linear forwards;
+			}
 		}
 
-		input[type=checkbox][disabled]:not(:checked) ~ .check:before, input[type=checkbox][disabled] ~ .circle
+		input[type="checkbox"][disabled]:not(:checked) ~ .check:before
 		{
 			opacity: 0.5;
 		}
-
-		input[type=checkbox][disabled] ~ .check:after
-		{
-			background-color: #eee;
-			
-			transform: rotate(-45deg);
-		}
-
-	&:not(:hover) input[type=checkbox] ~ .check
-	{
-		&:before, &:after
-		{
-			animation-duration: 1ms;
-			-webkit-animation-duration: 1ms;
-		}
-	}
 }
 
 
@@ -185,7 +200,7 @@
 
 	50%
 	{
-		opacity: 0.2;
+		opacity: 0.1;
 	}
 
 	100%
@@ -203,11 +218,16 @@
 
 	50%
 	{
-		opacity: 0.2;
+		opacity: 0.1;
 	}
 
 	100%
 	{
 		opacity: 0;
 	}
+}
+
+body.dark
+{
+
 }
